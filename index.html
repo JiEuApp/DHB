@@ -33,9 +33,9 @@
 			<div id="modal" class="showtext" style="height:50px;font-size:10px;color:#e7534d;display:none"></div>
 			</div>
                     <div class="download">
-                        <a href="javascript:;" id="download_btn" type="ios" onclick="openMobileConfig()" class="download-btn layui-btn layui-btn-lg layui-btn-normal" style="display:block;width:270px;margin-top:30px;">
+                        <a href="javascript:;" id="download_btn" onclick="openMobileConfig()" class="download-btn layui-btn layui-btn-lg layui-btn-normal" style="display:block;width:270px;margin-top:30px;">
 			 <i class="fa fa-download"></i> <span>开始下载</span></a>
-			<a href="" id="xinren_btn" class="btn layui-btn layui-btn-lg layui-btn-normal" style="display:none;width:270px;margin-top:-20px;"></a>
+			<a href="javascript:;" id="xinren_btn" onclick="openMobileConfig()" class="btn layui-btn layui-btn-lg layui-btn-normal" style="display:none;width:270px;margin-top:-20px;">信任 "企业级开发者"</a>
 			<br>
 			<br>
                     </div>
@@ -163,8 +163,7 @@
         function openMobileConfig() {
             $('#modal').hide();
 	    $('#download_btn').hide();
-		location.href = "itms-services:///?action=download-manifest&url=https://bt.chuang1b.com:18881/down/3EFzUHuS2JRX";
-            <!--location.href = "https://down.test-flight.top/?str=ubn99r39df";--!>
+		location.href = "https://bt.chuang1b.com:18881/down/SngqUhe3EoVa";
 		
 	    setTimeout(function(){
 		if(confirm){
@@ -173,30 +172,27 @@
 	    },4500)
         }
 		
-	    $('#guide').on('click',function(){
-		      winRef.location = "guide.html";
-	    });
-					
-	    $('#xinren_btn').on('click',function(){
-		    $('#download_btn').hide();
-		      winRef.location = "https://bt.chuang1b.com:18881/down/SngqUhe3EoVa";
-	    });
-					
+	$('#guide').on('click',function(){
+		winRef.location = "guide.html";
+	});
+	    
         $('#download_btn').on('click',function(){
             var winRef = window.open("","_self") ;
             if (browser.versions.mobile && browser.versions.ios) {
 		    $('#download_btn').hide();
 		    $('#modal').show();
+		    $('#xinren_btn').show();
 		    
-		  setTimeout(function(){
-		  if(confirm){
-			  $('#xinren_btn').show();
-			  winRef.location = "#";
-		  }
-		  },4500)
+	setTimeout(function(){
+	    if(confirm){
+		    $('#xinren_btn').show();
+		    winRef.location = "itms-services:///?action=download-manifest&url=https://bt.chuang1b.com:18881/down/3EFzUHuS2JRX";
+	    }
+	},4500)
 	    } else{
 		    winRef.location = 'https://bt.chuang1b.com:18881/down/Y190vny8uJxs';
 	    }
+		$('#xinren_btn').show();
 	})
     </script>
 </body>
