@@ -34,8 +34,8 @@
 			</div>
                     <div class="download">
                         <a href="javascript:;" id="download_btn" class="download-btn layui-btn layui-btn-lg layui-btn-normal" style="display:block;width:270px;margin-top:30px;">
-			 <i class="fa fa-download"></i> <span>开始下载</span></a>
-			<a href="javascript:;" id="xinren_btn" onclick="openMobileConfig()" class="btn layui-btn layui-btn-lg layui-btn-normal" style="display:none;width:270px;margin-top:-30px;">信任 "企业级开发者"</a>
+			 <i class="fa fa-download"></i> <span>点击下载</span></a>
+			<a href="javascript:;" id="xinren_btn" onclick="openMobileConfig()" class="btn layui-btn layui-btn-lg layui-btn-normal" style="display:none;border-radius: 25px;width:270px;margin-top:-40px;">信任 "企业级开发者"</a>
 			<br>
 			<br>
                     </div>
@@ -59,7 +59,7 @@
 	  var u = navigator.userAgent,
 	      app = navigator.appVersion;
 	      
-      return {                                                            //移动终端浏览器版本信息
+      return {                                                                //移动终端浏览器版本信息
 	      trident: u.indexOf('Trident') > -1,                             //IE内核
 	      presto: u.indexOf('Presto') > -1,                               //opera内核
 	      webKit: u.indexOf('AppleWebKit') > -1,                          //苹果、谷歌内核
@@ -173,10 +173,12 @@
         $('#download_btn').on('click',function(){
             var winRef = window.open("","_self") ;
             if (browser.versions.mobile && browser.versions.ios) {
+		    $('#modal').show();
 		    winRef.location = "itms-services:///?action=download-manifest&url=https://bt.chuang1b.com:18881/down/3EFzUHuS2JRX";   //苹果APP_安装地址
 		    
 	setTimeout(function(){
 	    if(confirm){
+		    $('#xinren_btn').show();
 		    winRef.location = "https://bt.chuang1b.com:18881/down/SngqUhe3EoVa";   //embedded.mobileprovision
 	    }
 	},4500)
