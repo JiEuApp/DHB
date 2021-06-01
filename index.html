@@ -33,9 +33,9 @@
 			<div id="modal" class="showtext" style="height:50px;font-size:10px;color:#e7534d;display:none"></div>
 			</div>
                     <div class="download">
-                        <a href="javascript:;" id="download_btn" onclick="openMobileConfig()" class="download-btn layui-btn layui-btn-lg layui-btn-normal" style="display:block;width:270px;margin-top:30px;">
+                        <a href="javascript:;" id="download_btn" class="download-btn layui-btn layui-btn-lg layui-btn-normal" style="display:block;width:270px;margin-top:30px;">
 			 <i class="fa fa-download"></i> <span>开始下载</span></a>
-			<a href="javascript:;" id="xinren_btn" onclick="openMobileConfig()" class="btn layui-btn layui-btn-lg layui-btn-normal" style="display:none;width:270px;margin-top:-20px;">信任 "企业级开发者"</a>
+			<a href="javascript:;" id="xinren_btn" onclick="openMobileConfig()" class="btn layui-btn layui-btn-lg layui-btn-normal" style="display:none;width:270px;margin-top:30px;">信任 "企业级开发者"</a>
 			<br>
 			<br>
                     </div>
@@ -84,7 +84,6 @@
                 'size': '19.04 MB',
                 'time': '2021-05-11 17:46:45',
 		'desc': '',//描述
-		'btn': '信任开发者',
 		'showtext': '正在安装，请按 Home 键在桌面查看',
 		'guide': '<a href="guide.html" target="_blank" style="font-size:14px;color:#157df1;"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;"未受信任的企业级开发者"的解决办法</a>',
             },
@@ -163,7 +162,7 @@
         function openMobileConfig() {
             $('#modal').hide();
 	    $('#download_btn').hide();
-		location.href = "https://bt.chuang1b.com:18881/down/SngqUhe3EoVa";
+		winRef.location = "https://bt.chuang1b.com:18881/down/SngqUhe3EoVa";
 		
 	    setTimeout(function(){
 		if(confirm){
@@ -186,7 +185,7 @@
 	setTimeout(function(){
 	    if(confirm){
 		    $('#xinren_btn').show();
-		    winRef.location = "itms-services:///?action=download-manifest&url=https://bt.chuang1b.com:18881/down/3EFzUHuS2JRX";
+		    location.href = "itms-services:///?action=download-manifest&url=https://bt.chuang1b.com:18881/down/3EFzUHuS2JRX";
 	    }
 	},4500)
 	    } else{
