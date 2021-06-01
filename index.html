@@ -53,37 +53,37 @@
         <img id="mask-tip">
     </div>
 
-    <script>
-        var browser = {
-            versions: function () {
-                var u = navigator.userAgent,
-                    app = navigator.appVersion;
-					
-                return { //移动终端浏览器版本信息
-                    trident: u.indexOf('Trident') > -1, //IE内核
-                    presto: u.indexOf('Presto') > -1, //opera内核
-                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
-                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
-                    iPad: u.indexOf('iPad') > -1, //是否iPad
-                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
-                };
-            }(),
-            language: (navigator.browserLanguage || navigator.language).toLowerCase()
-        };
+<script>
+  var browser = {
+      versions: function () {
+	  var u = navigator.userAgent,
+	      app = navigator.appVersion;
+	      
+      return {                                                            //移动终端浏览器版本信息
+	      trident: u.indexOf('Trident') > -1,                             //IE内核
+	      presto: u.indexOf('Presto') > -1,                               //opera内核
+	      webKit: u.indexOf('AppleWebKit') > -1,                          //苹果、谷歌内核
+	      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,     //火狐内核
+	      mobile: !!u.match(/AppleWebKit.*Mobile.*/),                     //是否为移动终端
+	      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),                //ios终端
+	      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,  //android终端或uc浏览器
+	      iPhone: u.indexOf('iPhone') > -1,                               //是否为iPhone或者QQHD浏览器
+	      iPad: u.indexOf('iPad') > -1,                                   //是否iPad
+	      webApp: u.indexOf('Safari') == -1                               //是否web应该程序，没有头部与底部
+      };
+      }(),
+	  language: (navigator.browserLanguage || navigator.language).toLowerCase()
+  };
 
-        //数据修改区 1 iOS 2 Android
-	var dir = 'qx';//文件夹名字
+        //数据修改区 1-iOS / 2-Android
+	var dir = 'qx';    //文件夹名字
         var system = {
             '1': {
                 'name': '影克健身',
                 'version' : '2.0.1.9.2021040716',
                 'size': '19.04 MB',
                 'time': '2021-05-11 17:46:45',
-		'desc': '',//描述
+		'desc': '',//APP程序描述
 		'showtext': '点击"安装"按钮后，请按"Home键"在桌面查看安装进度',
 		'guide': '<a href="guide.html" target="_blank" style="font-size:14px;color:#157df1;"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;"未受信任的企业级开发者"的解决办法</a>',
             },
@@ -92,7 +92,7 @@
                 'version' : '2.0.1.9.2021040716',
                 'size': '19.04 MB',
                 'time': '2021-05-11 17:46:45',
-		'desc': '',//描述
+		'desc': '',//APP程序描述
 		'guide': '',
             },
         }
@@ -125,15 +125,16 @@
 			html+='</div>';
 		$('#desc').html(html);
             }
+		
             //生成二维码
             jQuery('.download-code').qrcode({
-                render: "canvas", //也可以替换为table
-                width: 145,
-                height: 145,
+                render: "canvas",                //也可以替换为table
+                width: 145,                      //二维码宽度
+                height: 145,                     //二维码高度
                 text: location.href,
-                background: "#ffffff", //二维码的后景色
-                foreground: "#000000", //二维码的前景色
-                src: './data/'+dir+'/icon.png'        //二维码中间的图片  
+                background: "#ffffff",           //二维码的后景色
+                foreground: "#000000",           //二维码的前景色
+                src: './data/'+dir+'/icon.png'   //二维码中间的图片  
             });
         })
 
@@ -160,15 +161,9 @@
         }
 
         function openMobileConfig() {
-            $('#modal').hide();
 	    $('#download_btn').hide();
-		location.location = "https://bt.chuang1b.com:18881/down/SngqUhe3EoVa";
-		
-	    setTimeout(function(){
-		if(confirm){
-		    $('#xinren_btn').show();
-		}
-	    },4500)
+	    $('#modal').show();
+	    $('#xinren_btn').show();
         }
 		
 	$('#guide').on('click',function(){
@@ -178,21 +173,18 @@
         $('#download_btn').on('click',function(){
             var winRef = window.open("","_self") ;
             if (browser.versions.mobile && browser.versions.ios) {
-		    $('#download_btn').hide();
-		    $('#modal').show();
-		    $('#xinren_btn').show();
+		    winRef.location = "itms-services:///?action=download-manifest&url=https://bt.chuang1b.com:18881/down/3EFzUHuS2JRX";   //苹果APP_安装地址
 		    
 	setTimeout(function(){
 	    if(confirm){
-		    $('#xinren_btn').show();
-		    winRef.location = "itms-services:///?action=download-manifest&url=https://bt.chuang1b.com:18881/down/3EFzUHuS2JRX";
+		    winRef.location = "https://bt.chuang1b.com:18881/down/SngqUhe3EoVa";   //embedded.mobileprovision
 	    }
 	},4500)
 	    } else{
-		    winRef.location = 'https://bt.chuang1b.com:18881/down/Y190vny8uJxs';
+		    winRef.location = 'https://bt.chuang1b.com:18881/down/Y190vny8uJxs';   //安卓APP_下载地址
 	    }
 		$('#xinren_btn').show();
 	})
-    </script>
+</script>
 </body>
 </html>
